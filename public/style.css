@@ -1,0 +1,88 @@
+body{
+  font-family: 'Arimo', sans-serif;
+}
+
+h1{
+  margin-bottom: 0px;
+}
+
+p{
+  margin-bottom: 2rem;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.email-form{
+  width: 27rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-item{
+  margin-bottom: 1rem;
+  align-self: center;
+}
+
+input.form-item{
+  width: 15rem;
+  height: 2rem;
+}
+
+.spacing-left{
+  margin-left: 2rem;
+}
+
+.title{
+  width: 35rem;
+  margin-bottom: 1rem;
+}
+
+.inactive-image {
+  display: none;
+}
+
+.content-img{
+  height: 20rem;
+  width: 35rem;
+  display: flex;
+}
+
+.content-img img {
+  height: 20rem;
+  width: 35rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.next-button{
+  height: 4rem;
+  width: 20rem;
+  background-color: #32CD32;
+  font-size: 2rem;
+  color: white;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.loader {
+  border: 14px solid #f3f3f3; /* Light grey */
+  border-top: 14px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  animation: spin 2s linear infinite;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
