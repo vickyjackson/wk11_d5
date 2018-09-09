@@ -11,11 +11,12 @@ const listContainer = document.createElement('div');
 const newList = document.createElement('ul');
 const popup = document.querySelector('.popup');
 const overlay = document.querySelector('.overlay');
+const submitButton = document.querySelector('#submit');
+const emailForm = document.querySelector('.email-form');
+const close = document.querySelector('.close');
 
 document.addEventListener('DOMContentLoaded', () => {
   const currentImage = document.querySelector('.active-image');
-  const emailForm = document.querySelector('.email-form');
-  const close = document.querySelector('.close');
   title.textContent = "1. " + currentImage.title;
   contentImages.forEach((image, index) => {
   image.classList.add('image' + (index += 1).toString());
@@ -61,6 +62,9 @@ const hideElements = function(elements){
 const handleClickClose = function(){
   toggleVisibility(popup); //off
   toggleVisibility(overlay);
+  popup.classList.remove('stretch-popup')
+  emailForm.removeChild(listContainer);
+  inputLabel.textContent = `Why not recommend some more friends?`
   while (newList.firstChild) {
     newList.removeChild(newList.firstChild);
   }
@@ -99,10 +103,11 @@ const handleFormSubmit = function(event) {
   event.preventDefault();
   const newListItem = document.createElement('li');
   const inputedEmail = event.target.email.value;
-  const submitButton = document.querySelector('#submit');
-  const emailForm = document.querySelector('.email-form');
-  const popup = document.querySelector('.popup');
   listContainer.classList.add('list-container')
+
+  // if user is subscribed
+  // switch out form elements so they can now invite friends
+
   if (inputLabel.textContent.includes("You're now subscribed")){
     if((document.querySelectorAll('.list-container').length === 0)){
       popup.classList.add('stretch-popup')
@@ -111,14 +116,30 @@ const handleFormSubmit = function(event) {
     };
     newList.appendChild(newListItem);
     newListItem.textContent = `${event.target.email.value}`;
+
+  // if user has already recommended friends
+  // update form elements to reflect that
+
+  } else if(inputLabel.textContent.includes("Why not recommend some more friends")) {
+    if((document.querySelectorAll('.list-container').length === 0)){
+      popup.classList.add('stretch-popup')
+      emailForm.appendChild(listContainer);
+      listContainer.appendChild(newList);
+    };
+    newList.appendChild(newListItem);
+    newListItem.textContent = `${event.target.email.value}`;
+
+  // if user has just subscribed, and has not recommended any friends
+  // let them know they subscribed and change text on button to "Invite friend"
   } else {
-    inputLabel.textContent = `You're now subscribed to our list with ${inputedEmail}! Why not recommend some friends, too?`;
+    inputLabel.innerHTML = `You're now subscribed to our list with <strong class="red">${inputedEmail}</strong>! Why not recommend some friends, too?`;
     submitButton.value = "Invite friend!";
   }
+
+  // clear the form values
   form.reset();
 };
 
 // TODO
-// Add a "Delete All" <button> which clears all of the list items from the list
 // make email bold
 
