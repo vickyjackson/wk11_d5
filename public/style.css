@@ -52,6 +52,10 @@ input.form-item{
   margin-left: 2rem;
 }
 
+.spacing-right{
+  margin-right: 2rem;
+}
+
 .title{
   width: 35rem;
   margin-bottom: 1rem;
@@ -76,6 +80,18 @@ input.form-item{
   right: 1rem;
   background-color: white;
   color:black;
+}
+
+.advert{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.advert img{
+  width:50rem;
+  object-fit: cover;
+  object-position: center;
 }
 
 .popup{

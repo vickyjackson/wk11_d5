@@ -14,6 +14,7 @@ const overlay = document.querySelector('.overlay');
 const submitButton = document.querySelector('#submit');
 const emailForm = document.querySelector('.email-form');
 const close = document.querySelector('.close');
+const advert = document.querySelector('.advert');
 
 document.addEventListener('DOMContentLoaded', () => {
   const currentImage = document.querySelector('.active-image');
@@ -84,9 +85,10 @@ const handleClickNext = function(){
     nextButton.disabled = true;
     toggleVisibility(currentImage);
     toggleVisibility(loader);
-    hideElements([loader, title, header, tagline, form, nextButton]);
+    hideElements([loader, title, header, tagline, form, nextButton, advert]);
     delayRenderingOfElements([header, tagline, form], 600);
-    delayRenderingOfElements(loader, 1000);
+    delayRenderingOfElements(advert, 1000);
+    delayRenderingOfElements(loader, 1200);
     delayRenderingOfElements(nextButton, 4000, function(){
       toggleVisibility(loader);
     });
@@ -140,6 +142,7 @@ const handleFormSubmit = function(event) {
   form.reset();
 };
 
-// TODO
-// make email bold
+//TODO 
+// make adverts
+
 
